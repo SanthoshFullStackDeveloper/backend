@@ -8,7 +8,6 @@ const nodemailer = require('nodemailer');
 const PORT = process.env.PORT || 12345;
 const app = express();
 
-//Middleware   
 app.use(cors());
 app.use(express.json());
 
