@@ -12,12 +12,18 @@ app.use(cors());
 app.use(express.json());
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail', // or your email service
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // false for STARTTLS
+  requireTLS: true,
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS, // Use app password for Gmail
+    pass: process.env.EMAIL_PASS,
   },
+  logger: true,
+  debug: true,
 });
+
 
 const otpStore = new Map();
 
