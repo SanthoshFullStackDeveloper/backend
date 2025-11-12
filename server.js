@@ -8,22 +8,17 @@ const nodemailer = require('nodemailer');
 const PORT = process.env.PORT || 12345;
 const app = express();
 
+//Middleware 
 app.use(cors());
 app.use(express.json());
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false, // false for STARTTLS
-  requireTLS: true,
+  service: 'gmail', // or your email service
   auth: {
     user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    pass: process.env.EMAIL_PASS, // Use app password for Gmail
   },
-  logger: true,
-  debug: true,
 });
-
 
 const otpStore = new Map();
 
